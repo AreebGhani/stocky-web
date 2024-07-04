@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for https://stocky.uk.com/</title>
+  <link>https://stocky.uk.com/</link>
+
+<item>
+     <link>https://stocky.uk.com/</link>
+     <title>Stocky</title>
+     <description>Stocky is an earning app designed to provide users with the opportunity to invest in shares and earn daily profits on their deposit amount.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://stocky.uk.com/home</link>
+     <title>Home – Stocky</title>
+     <description>Stocky is an earning app designed to provide users with the opportunity to invest in shares and earn daily profits on their deposit amount.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  

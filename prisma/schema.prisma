@@ -1,0 +1,134 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  username        String            @unique
+  email           String            @default("null")
+  phone           String            @default("null")
+  password        String
+  picture         String?           @default("")
+  role            String            @default("user")
+  rank            Int               @default(0)
+  referrer        User?             @relation("ReferrerToReferrals", fields: [referrerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  referrerId      String?           @db.ObjectId
+  referrals       User[]            @relation("ReferrerToReferrals")
+  secret          String?           @default("")
+  balance         Float             @default(0.0)
+  diamonds        Int               @default(0)
+  teamCommission  Float             @default(0.0)
+  stockPurchases  StockPurchase[]   @relation("UserToStockPurchases")
+  dailyProfit     DailyProfit?      @relation("UserToDailyProfit")
+  wallet          Wallet?           @relation("UserToWallet")
+  transactions    Transaction[]     @relation("UserToTransactions")
+  WithdrawRequest WithdrawRequest[] @relation("UserToWithdrawRequest")
+  DepositRequest  DepositRequest[]  @relation("UserToDepositRequest")
+  reward          Reward?           @relation("UserToReward")
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model OtpCode {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @default("null")
+  phone       String   @default("null")
+  code        String   @unique
+  attempts    Int      @default(0)
+  resendAfter String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model StockPurchase {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  stockName   String
+  quantity    Int
+  totalPrice  Float
+  paymentType String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation("UserToStockPurchases", fields: [userId], references: [id])
+}
+
+model DailyProfit {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  dailyProfit Float    @default(0.0)
+  userId      String   @unique @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation("UserToDailyProfit", fields: [userId], references: [id])
+}
+
+model Wallet {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  address   String   @unique
+  pin       Int
+  userId    String   @unique @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation("UserToWallet", fields: [userId], references: [id])
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAW
+}
+
+model Transaction {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  transactionId String          @unique
+  userId        String          @db.ObjectId
+  amount        Float
+  type          TransactionType
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  user          User            @relation("UserToTransactions", fields: [userId], references: [id])
+}
+
+model WithdrawRequest {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String    @db.ObjectId
+  amount      Float
+  complete    Boolean   @default(false)
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation("UserToWithdrawRequest", fields: [userId], references: [id])
+}
+
+model DepositRequest {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String    @db.ObjectId
+  amount        Float
+  screenshot    String
+  transactionId String    @unique
+  complete      Boolean   @default(false)
+  completedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  user          User      @relation("UserToDepositRequest", fields: [userId], references: [id])
+}
+
+model Reward {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  claimDiamonds3  Boolean  @default(false)
+  claimDiamonds6  Boolean  @default(false)
+  claimDiamonds10 Boolean  @default(false)
+  claimDiamonds20 Boolean  @default(false)
+  claimDiamonds50 Boolean  @default(false)
+  claimDiamonds70 Boolean  @default(false)
+  userId          String   @unique @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation("UserToReward", fields: [userId], references: [id])
+}

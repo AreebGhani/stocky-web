@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stocky-web
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - .env
+    networks:
+      - stocky
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=Kwef0ClgQ5DoKzS2
+      - MONGO_INITDB_DATABASE=stocky
+    networks:
+      - stocky
+
+networks:
+  stocky:
+volumes:
+  mongodb-data:

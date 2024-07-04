@@ -1,0 +1,411 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-color: rgba(30, 40, 48);
+    --react-international-phone-height: 36px;
+    --react-international-phone-background-color: rgba(255, 255, 255, 0.40);
+    --react-international-phone-text-color: rgba(255, 255, 255, 0.67);
+    --react-international-phone-font-size: 13px;
+    --react-international-phone-border-radius: 10px;
+    --react-international-phone-border-color: transparent;
+    --react-international-phone-country-selector-background-color: rgba(255, 255, 255, 0.40);
+    --react-international-phone-country-selector-background-color-hover: rgba(255, 255, 255, 0.30);
+    --react-international-phone-disabled-country-selector-background-color: --react-international-phone-disabled-background-color;
+    --react-international-phone-country-selector-border-color: 0px;
+    --react-international-phone-country-selector-arrow-size: 4px;
+    --react-international-phone-country-selector-arrow-color: rgba(0, 0, 0, 0.83);
+    --react-international-phone-flag-width: 15px;
+    --react-international-phone-flag-height: 15px;
+    --react-international-phone-dropdown-item-font-size: 14px;
+    --react-international-phone-dropdown-item-text-color: --react-international-phone-text-color;
+    --react-international-phone-dropdown-item-height: 28px;
+    --react-international-phone-dropdown-item-background-color: rgb(120, 126, 131);
+    --react-international-phone-dropdown-item-dial-code-color: rgba(255, 255, 255, 0.67);
+    --react-international-phone-selected-dropdown-item-text-color: rgba(255, 255, 255, 0.8);
+    --react-international-phone-selected-dropdown-item-background-color: rgb(98, 105, 111);
+    --react-international-phone-selected-dropdown-item-dial-code-color: -react-international-phone-dropdown-item-dial-code-color;
+    --react-international-phone-focused-dropdown-item-background-color: --react-international-phone-selected-dropdown-item-background-color;
+    --react-international-phone-dropdown-shadow: 2px 2px 16px rgb(0 0 0 / 25%);
+    --react-international-phone-dropdown-left: 0;
+    --react-international-phone-dropdown-top: 44px;
+}
+
+* {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    letter-spacing: normal;
+    overflow-x: hidden;
+    scrollbar-color: #c8f8f6;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body::-webkit-scrollbar {
+    width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(54, 54, 54);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #fff;
+    border: 5px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.stocky {
+    background: conic-gradient(from 0deg at 55.19% 61.36%, #9DEEBA 47.34957218170166deg, #82B2CE 99.03350830078125deg, #CDEC58 177.38612294197083deg, #BB20C5 319.9243426322937deg);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.active {
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(220, 58, 246, 0.80);
+}
+
+.custom-button {
+    @apply flex items-center justify-center;
+    padding: 14px 0px;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #3589EC 22%, rgba(117, 244, 96, 1) 275%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #FCFCFC;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+    border: none;
+    appearance: none;
+}
+
+.custom-button:hover {
+    background: linear-gradient(180deg, #3589EC 20%, rgba(0, 0, 0, 0.00) 275%);
+    outline: none;
+    border: none;
+    appearance: none;
+}
+
+.custom-button:active,
+.custom-button:focus {
+    outline: none;
+    border: none;
+    appearance: none;
+}
+
+.custom-button.disabled,
+.custom-button.disabled:hover {
+    background: linear-gradient(180deg, #3589EC 20%, rgba(0, 0, 0, 0.00) 275%);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loading {
+    position: relative;
+    @apply overflow-hidden bg-gray-700
+}
+
+.loading:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading 0.8s infinite;
+    -webkit-animation: loading 0.8s infinite;
+    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+}
+
+.loading-team {
+    position: relative;
+    @apply overflow-hidden
+}
+
+.loading-team:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading 0.8s infinite;
+    -webkit-animation: loading 0.8s infinite;
+    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+}
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+    }
+}
+
+.phoneDropdown {
+    background-color: transparent !important;
+}
+
+.phoneDropdown .react-international-phone-country-selector-dropdown {
+    color: var(--react-international-phone-text-color) !important;
+    min-height: 250px !important;
+    width: 315px !important;
+    border-radius: 10px;
+    position: absolute !important;
+    top: 100% !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.phoneDropdown .react-international-phone-country-selector-dropdown::-webkit-scrollbar {
+    width: 0;
+}
+
+.phoneDropdown .react-international-phone-country-selector-dropdown::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.phoneDropdown .react-international-phone-country-selector-dropdown::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.bottom-nav .link {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.bottom-nav .shadow {
+    border-radius: 45px;
+    background: linear-gradient(180deg, rgba(242, 18, 246, 0.28) 0%, rgba(29, 73, 227, 0.00) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(64, 35, 242, 0.61) inset;
+    width: 45px;
+    height: 41px;
+}
+
+.bottom-nav .active-link {
+    stroke: rgba(22, 68, 229, 0.70);
+    filter: drop-shadow(0px 1px 5px rgba(38, 21, 235, 0.47));
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(22, 68, 229, 0.70);
+}
+
+.swiper {
+    overflow: visible !important;
+}
+
+.swiper-pagination {
+    position: absolute !important;
+    left: 50% !important;
+    z-index: 20 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+    @apply !top-[110%] md:!top-[105%];
+    transform: translateX(-50%) !important;
+    -webkit-transform: translateX(-50%) !important;
+    -moz-transform: translateX(-50%) !important;
+    -ms-transform: translateX(-50%) !important;
+    -o-transform: translateX(-50%) !important;
+}
+
+.swiper-custom-pagination-bullet {
+    display: block;
+    border-radius: 100%;
+    width: 11px;
+    height: 11px;
+    opacity: 1.0;
+    background-color: rgba(255, 255, 255, 0.67);
+}
+
+.swiper-custom-pagination-bullet-active {
+    width: 11px;
+    height: 11px;
+    opacity: 1.0;
+    background-color: #DA15EB;
+}
+
+.custom-scroll {
+    overflow-x: hidden;
+    scrollbar-color: transparent;
+    scrollbar-width: thin;
+}
+
+.table-scroll {
+    overflow: auto;
+    scrollbar-color: transparent;
+    scrollbar-width: thin;
+}
+
+.custom-scroll::-webkit-scrollbar,
+.table-scroll::-webkit-scrollbar {
+    width: 0rem;
+}
+
+.custom-scroll::-webkit-scrollbar-track,
+.table-scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb,
+.table-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 5px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
+}
+
+.news .news-img {
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.img-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(70, 155, 255, 0.40);
+}
+
+.buyBtn-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.stockDaily-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(110, 136, 228, 0.25);
+}
+
+.buy-stock {
+    background: radial-gradient(132.24% 132.03% at 44.37% 86.72%, #BF28F4 0%, #2848F4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.balance-usdt {
+    background: linear-gradient(68deg, rgba(233, 33, 251, 0.31) -15.71%, rgba(233, 33, 251, 0.31) 3.17%, rgba(33, 251, 60, 0.00) 111.11%);
+    box-shadow: 0px 2px 10px 0px rgba(214, 108, 232, 0.61);
+}
+
+.balance-diamond {
+    background: linear-gradient(68deg, rgba(31, 236, 113, 0.31) -15.71%, rgba(33, 251, 81, 0.31) 3.17%, rgba(33, 251, 60, 0.00) 111.11%);
+    box-shadow: 0px 2px 10px 0px rgba(58, 225, 54, 0.61);
+}
+
+.buyBtn {
+    background: linear-gradient(180deg, rgba(135, 241, 158, 0.37) 0%, #06902D 10.93%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buyBtn:hover {
+    background: linear-gradient(180deg, #06C63B 27.08%, rgba(135, 241, 158, 0.37) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.user-profile {
+    background: url(/img/user.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.logout-modal {
+    background: linear-gradient(107deg, rgba(39, 68, 221, 0.20) 34.66%, rgba(0, 0, 0, 0.00) 58.27%), linear-gradient(132deg, rgba(242, 107, 204, 0.98) 21.42%, rgba(190, 128, 172, 0.77) 75.65%);
+}
+
+.dashboard-balance {
+    background: linear-gradient(60deg, rgba(233, 33, 251, 0.31) -15.71%, rgba(233, 33, 251, 0.31) 3.17%, rgba(21, 241, 48, 0.16) 107.34%, rgba(233, 33, 251, 0.31) 164.32%);
+    box-shadow: 0px 2px 10px 0px rgba(214, 108, 232, 0.61);
+}
+
+.dashboard-balance .text-shadow {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.29);
+}
+
+.dashboard-button {
+    background: linear-gradient(155deg, rgba(233, 33, 251, 0.31) -29.95%, rgba(233, 33, 251, 0.10) 40.71%, rgba(21, 241, 48, 0.26) 107.34%, rgba(233, 33, 251, 0.31) 164.32%);
+    box-shadow: 0px 2px 10px 0px rgba(214, 108, 232, 0.61);
+}
+
+.dashboard-button:hover {
+    background: linear-gradient(155deg, rgba(233, 33, 251, 0.31) -19.95%, rgba(233, 33, 251, 0.10) 30.71%, rgba(21, 241, 48, 0.26) 97.34%, rgba(233, 33, 251, 0.31) 154.32%);
+}
+
+.dashboard-button h2 {
+    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.team {
+    background: linear-gradient(68deg, rgba(31, 236, 113, 0.15) -13.57%, rgba(33, 251, 81, 0.15) 5.31%, rgba(33, 251, 60, 0.00) 113.25%);
+}
+
+.team .active-level {
+    background: url(/img/active-level.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 90px !important;
+    filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.25));
+}
+
+.team .text-shadow {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.custom-heading {
+    background: radial-gradient(132.24% 132.03% at 44.37% 86.72%, #BF28F4 0%, #BF28F4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.invite-shadow {
+    filter: drop-shadow(4px 4px 20px rgba(239, 91, 224, 0.60));
+}
+
+.invite-bg {
+    background: url(/img/invite-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
