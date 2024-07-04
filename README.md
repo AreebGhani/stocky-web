@@ -1,25 +1,4 @@
-# Stocky Web Production
-
-## Branches
-
-### `web` Branches
-
-The `web` branches is dedicated to the development of the web application using Next.js. This branch contains the latest codebase for the web app.
-
-#### Getting Started with the Web
-
-To work on the web app, follow these steps:
-
-```bash
-# Clone the Repository
-git clone https://github.com/AreebGhani/stocky.git
-cd stocky
-
-# Switch to the "web-prod" branch for the production version
-git checkout web-prod
-```
-
-
+# Stocky Web
 
 ## Getting Started
 
